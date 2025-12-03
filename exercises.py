@@ -106,7 +106,7 @@ def calculate_dog_years():
     if dog_age <= 2:
         age = dog_age * 10
     else:
-        age = 20 + dog_age * 7
+        age = 20 + (dog_age - 2) * 7
 
     print("The dog's age in dog years is", age)
 # Call the function
@@ -170,20 +170,23 @@ print('==================================')
 
 def determine_season():
     # Your control flow logic goes here
-    
-    month = input("Enter the month of the year (Jan - Dec): ")
-    day = int(input("Etner the day of the month: "))
 
-    if (month == "Dec" and day >= 21) or (month == "Jan") or (month == "Feb") or (month == "Mar" and day <= 19):
+    month = input("Enter the month of the year (Jan - Dec): ").strip().title()
+    day = int(input("Enter the day of the month: "))
+
+    if (month == "Dec" and day >= 21) or (month in ["Jan", "Feb"]) or (month == "Mar" and day <= 19):
         season = "Winter"
-    if (month == "Mar" and day >= 20) or (month == "Apr") or (month == "May") or (month == "Jun" and day <= 20):
+    elif (month == "Mar" and day >= 20) or (month in ["Apr", "May"]) or (month == "Jun" and day <= 20):
         season = "Spring"
-    if (month == "Jun" and day >= 21) or (month == "Jul") or (month == "Aug") or (month == "Sep" and day <= 21):
+    elif (month == "Jun" and day >= 21) or (month in ["Jul", "Aug"]) or (month == "Sep" and day <= 21):
         season = "Summer"
-    if (month == "Sep" and day >= 22) or (month == "Oct") or (month == "Nov") or (month == "Dec" and day <= 20):
+    elif (month == "Sep" and day >= 22) or (month in ["Oct", "Nov"]) or (month == "Dec" and day <= 20):
         season = "Fall"
-    
+    else:
+        season = "Invalid season"
+
     print(month, day, "is in", season)
+
 
 # Call the function
 determine_season()
